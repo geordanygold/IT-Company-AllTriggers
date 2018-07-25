@@ -11,7 +11,7 @@ public class TestUtilsCreateString {
         );
         insert firstClient;
         
-        LIST <String> fields = new LIST <String>{'Name', 'Email__c', 'Budget__c'};
+        List <String> fields = new List <String>{'Name', 'Email__c', 'Budget__c'};
             
         String fieldsValues = UtillsCreateString.populateKey(firstClient, fields, '***');
         system.assertEquals('Client1***test@gmail.com***1800', fieldsValues);
