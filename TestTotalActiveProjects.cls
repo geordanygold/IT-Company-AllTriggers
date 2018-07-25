@@ -16,8 +16,8 @@ public class TestTotalActiveProjects {
         Project__c thirdProject = ITCompanyDataFactory.secProject(false, 'Project3', firstClient.Id, true);
         insert thirdProject;
         
-		firstClient = [SELECT TotalActiveProjects_c__c FROM Client__c WHERE Id =: firstClient.Id];
-		system.assertEquals(2, firstClient.TotalActiveProjects_c__c);        
+	firstClient = [SELECT TotalActiveProjects_c__c from Client__c WHERE Id =: firstClient.Id];
+	system.assertEquals(2, firstClient.TotalActiveProjects_c__c);        
     }
     
     
@@ -27,13 +27,13 @@ public class TestTotalActiveProjects {
         Client__c firstClient = ITCompanyDataFactory.oneClient(false, 'Client11');
         insert firstClient;
         
-        Project__c firstProject = ITCompanyDataFactory.secProject(false, 'Project1', firstClient.Id, TRUE);
+        Project__c firstProject = ITCompanyDataFactory.secProject(false, 'Project1', firstClient.Id, true);
         insert firstProject;
         
         Project__c secondProject = ITCompanyDataFactory.secProject(false, 'Project2', firstClient.Id, false);
         insert secondProject;
         
-        Project__c thirdProject = ITCompanyDataFactory.secProject(false, 'Project3', firstClient.Id, TRUE);
+        Project__c thirdProject = ITCompanyDataFactory.secProject(false, 'Project3', firstClient.Id, true);
         insert thirdProject;
         
 
@@ -43,7 +43,7 @@ public class TestTotalActiveProjects {
 
         System.runAs ( u1 ){
             
-            secondProject.Active__c = TRUE;
+            secondProject.Active__c = true;
             update secondProject;
             
             firstClient = [SELECT TotalActiveProjects_c__c FROM Client__c WHERE Id =: firstClient.Id];          
@@ -59,18 +59,19 @@ public class TestTotalActiveProjects {
         Client__c firstClient = ITCompanyDataFactory.oneClient(false, 'Client11');
         insert firstClient;
         
-        Project__c firstProject = ITCompanyDataFactory.secProject(false, 'Project1', firstClient.Id, TRUE);
+        Project__c firstProject = ITCompanyDataFactory.secProject(false, 'Project1', firstClient.Id, true);
         insert firstProject;
         
         Project__c secondProject = ITCompanyDataFactory.secProject(false, 'Project2', firstClient.Id, false);
         insert secondProject;
         
-        Project__c thirdProject = ITCompanyDataFactory.secProject(false, 'Project3', firstClient.Id, TRUE);
+        Project__c thirdProject = ITCompanyDataFactory.secProject(false, 'Project3', firstClient.Id, true);
         insert thirdProject;
             
-            delete firstProject;
+    	delete firstProject;
             
-            firstClient = [SELECT TotalActiveProjects_c__c FROM Client__c WHERE Id =: firstClient.Id];          
+    	firstClient = [SELECT TotalActiveProjects_c__c FROM Client__c WHERE Id =: firstClient.Id]; 
+    	system.assertEquals(1, firstClient.TotalActiveProjects_c__c);
 
     }
 
