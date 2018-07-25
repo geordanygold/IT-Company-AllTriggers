@@ -1,7 +1,7 @@
 trigger TotalActiveProjects on Project__c (before insert, before update, before delete, after insert, 
-											after update, after delete, after undelete) {
+							after update, after delete, after undelete) {
 
-	LIST <Id> clientsIds = new LIST <Id>();
+	List <Id> clientsIds = new List <Id>();
 
 		if (Trigger.isInsert || Trigger.isUndelete) {
 	    	
