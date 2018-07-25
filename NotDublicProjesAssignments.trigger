@@ -1,10 +1,10 @@
 trigger NotDublicProjesAssignments on Project_Assignment__c (before insert, before update) {
 
 
-	SET <Id> projesIdsNew = new SET <Id>();
-	SET <Id> projesIdsOld = new SET <Id>();
-	SET <Id> devsIdsNew = new SET <Id>();
-	SET <Id> devsIdsOld = new SET <Id>();
+	Set <Id> projesIdsNew = new Set <Id>();
+	Set <Id> projesIdsOld = new Set <Id>();
+	Set <Id> devsIdsNew = new Set <Id>();
+	Set <Id> devsIdsOld = new Set <Id>();
 	
 		For( Project_Assignment__c prAssnew : Trigger.new ){
 
@@ -14,9 +14,9 @@ trigger NotDublicProjesAssignments on Project_Assignment__c (before insert, befo
 
 
 		For( Project_Assignment__c prAss : [Select Id, Project__c, Developer__c
-											From Project_Assignment__c
-											Where Project__c In : projesIdsNew
-											AND Developer__c In : devsIdsNew]){
+							From Project_Assignment__c
+							Where Project__c In : projesIdsNew
+							AND Developer__c In : devsIdsNew]){
 
 
 			projesIdsOld.add(prAss.Project__c);
