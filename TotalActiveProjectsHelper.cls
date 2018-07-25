@@ -4,16 +4,16 @@ public  class TotalActiveProjectsHelper {
 
 		CountClientsActiveProjects myResult = new CountClientsActiveProjects();
 
-			MAP <Id, Integer> activeProjects = new MAP <Id, Integer>();
-			LIST <Id> clientsWithActiveProjectsIds = new LIST <Id>();
-			LIST <Client__c> clientsActiveProjes = new LIST <Client__c>();
+			Map <Id, Integer> activeProjects = new Map <Id, Integer>();
+			List <Id> clientsWithActiveProjectsIds = new List <Id>();
+			List <Client__c> clientsActiveProjes = new List <Client__c>();
 
 
-			LIST <AggregateResult> allProjects = [Select Client__c, COUNT(Id)total
-												From Project__c
-												Where Client__c In : clientsIds
-												AND Active__c = TRUE
-												GROUP By Client__c];
+			List <AggregateResult> allProjects = [Select Client__c, COUNT(Id)total
+								From Project__c
+								Where Client__c In : clientsIds
+								AND Active__c = true
+								GROUP By Client__c];
 
 			For( AggregateResult ag : allProjects ){
 				myResult.clientsActiveProjes.add( new Client__c( 
@@ -26,8 +26,8 @@ public  class TotalActiveProjectsHelper {
 
 
 			myResult.clientsWithoutActiveProjects = [Select Id, TotalActiveProjects_c__c
-													From Client__c
-													Where Id NOT In : clientsWithActiveProjectsIds];
+								From Client__c
+								Where Id NOT In : clientsWithActiveProjectsIds];
 
 			For( Client__c client : myResult.clientsWithoutActiveProjects ){
 				client.TotalActiveProjects_c__c = 0;
