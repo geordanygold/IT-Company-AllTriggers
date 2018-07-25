@@ -4,7 +4,7 @@ public class TestPreventDublicates {
     @isTest 
     public static void preventDublics(){
 
-    	Boolean result = FALSE;
+    	Boolean result = false;
 
         Client__c firstClient = ITCompanyDataFactory.oneClient(false, 'Client11');
         insert firstClient;
@@ -25,7 +25,7 @@ public class TestPreventDublicates {
 
         } catch (DmlException e){
 
-        	result = TRUE;
+        	result = true;
         }
         
         System.assert(result);   
