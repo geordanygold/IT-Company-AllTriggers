@@ -17,8 +17,5 @@ public class UtillsCreateString {
         }
         return result;
     }   
-//String description = (String)acc.get(Schema.Account.Description);
-//String sInteger = String.valueOf(myInteger);
-//String item = String.valueOf(record.get(Schema.sObject.sobj));
 
 }
