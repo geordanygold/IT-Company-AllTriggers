@@ -17,12 +17,12 @@ trigger TotalBilliableProjects on Project_Assignment__c (before insert, after in
 
 				Project_Assignment__c projAssOld = Trigger.oldMap.get(projAssNew.Id);
                 
-                system.debug('This is old Dev this assignment ' + projAssOld.Developer__c);
+                		system.debug('This is old Dev this assignment ' + projAssOld.Developer__c);
 
 				if( projAssOld.Developer__c != projAssNew.Developer__c ){
 					devsIds.add(projAssNew.Developer__c);
-                    devsIds.add(projAssOld.Developer__c);
-                    system.debug('This is new Dev this assignment ' + projAssNew.Developer__c);
+					devsIds.add(projAssOld.Developer__c);
+					system.debug('This is new Dev this assignment ' + projAssNew.Developer__c);
 				}
 			}
 		}
